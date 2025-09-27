@@ -15,6 +15,15 @@ android {
         versionName "2.2.0"
         multiDexEnabled true
         ndk { abiFilters "armeabi-v7a" }
+        python {
+            buildPython "/opt/hostedtoolcache/Python/3.8.18/x64/bin/python3.8"
+            pip {
+                install "lxml"
+                install "requests"
+                install "pycryptodome"
+                install "beautifulsoup4"
+            }
+        }
         javaCompileOptions {
             annotationProcessorOptions {
                 arguments = ["room.schemaLocation": "$projectDir/schemas".toString()]
@@ -67,18 +76,9 @@ android {
     }
 }
 
-chaquopy {
-    defaultConfig {
-        buildPython "/opt/hostedtoolcache/Python/3.8.18/x64/bin/python3.8"
-        pip {
-            install "lxml"
-            install "requests"
-            install "pycryptodome"
-            install "beautifulsoup4"
-            
-        }
-    }
-}
+
+
+
 
 dependencies {
     implementation project(':hook')
