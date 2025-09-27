@@ -21,6 +21,10 @@ android {
         }
     }
 
+    chaquopy {
+        buildPython "python3.8"
+    }
+
     productFlavors {
         leanback {
             dimension "default"
