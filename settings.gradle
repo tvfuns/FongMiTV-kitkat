@@ -11,7 +11,7 @@ dependencyResolutionManagement {
     repositories {
         maven { url 'https://download.01.org/crosswalk/releases/crosswalk/android/maven2' }
         mavenCentral()
-        jcenter()
+        //jcenter()
         google()
         flatDir {
             dirs "$rootDir/app/libs"
