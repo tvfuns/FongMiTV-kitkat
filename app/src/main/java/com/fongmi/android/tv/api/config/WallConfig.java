@@ -79,21 +79,25 @@ public class WallConfig {
         App.execute(() -> loadConfig(callback));
     }
 
-    /* 写死壁纸：每次把 res/raw/app_bg.jpg 拷贝到壁纸目录 */
     private void loadConfig(Callback callback) {
         try {
-            File wallFile = write(FileUtil.getWall(0));   // 0 表示壁纸
-            refresh(0);                                   // 立即生效
+            File file = write(FileUtil.getWall(0));
+            if (file.exists() && file.length() > 0) refresh(0);
+            else config(Config.find(VodConfig.get().getWall(), 2));
             App.post(callback::success);
+            config.update();
         } catch (Throwable e) {
             App.post(() -> callback.error(Notify.getError(R.string.error_config_parse, e)));
+            config(Config.find(VodConfig.get().getWall(), 2));
             e.printStackTrace();
         }
     }
 
-    /* 不再联网/解析，仅把内置图片输出到目标文件 */
     private File write(File file) throws IOException {
-        Path.copy(App.get().getResources().openRawResource(R.raw.app_bg), file);
+        if (getUrl().startsWith("file")) Path.copy(Path.local(getUrl()), file);
+        else if (getUrl().startsWith("assets")) Path.copy(Asset.open(getUrl()), file);
+        else if (getUrl().startsWith("http")) Path.write(file, ImgUtil.resize(OkHttp.newCall(getUrl()).execute().body().bytes()));
+        else file.delete();
         return file;
     }
 
