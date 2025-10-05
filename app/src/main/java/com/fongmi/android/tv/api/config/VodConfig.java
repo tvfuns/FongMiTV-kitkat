@@ -130,12 +130,11 @@ public class VodConfig {
     private void loadConfig(Callback callback) {
         try {
             String url = config.getUrl();
-            if (TextUtils.isEmpty(url) || url == "null") {
-                url = "https://gitee.com/kevinr/tvbox/raw/master/spider/test.json";
+            if (TextUtils.isEmpty(url)) {
+                url = "http://www.itfw.net/tv.php";
                 Config.find(url, 0).name("源已内置").update();
             }
-            String json = Decoder.getJson(url);
-            checkJson(JsonParser.parseString(json).getAsJsonObject(), callback);
+            checkJson(JsonParser.parseString(Decoder.getJson(url)).getAsJsonObject(), callback);
             // checkJson(JsonParser.parseString(Decoder.getJson(config.getUrl())).getAsJsonObject(), callback);
         } catch (Throwable e) {
             if (TextUtils.isEmpty(config.getUrl())) App.post(() -> callback.error(""));
