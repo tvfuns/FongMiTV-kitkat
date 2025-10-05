@@ -232,11 +232,11 @@ public class HomeActivity extends BaseActivity implements CustomTitleView.Listen
     private ListRow getFuncRow() {
         ArrayObjectAdapter adapter = new ArrayObjectAdapter(new FuncPresenter(this));
         adapter.add(Func.create(R.string.home_vod));
-        adapter.add(Func.create(R.string.home_live));
+        // adapter.add(Func.create(R.string.home_live));
         adapter.add(Func.create(R.string.home_search));
         adapter.add(Func.create(R.string.home_keep));
-        adapter.add(Func.create(R.string.home_push));
-        adapter.add(Func.create(R.string.home_setting));
+        // adapter.add(Func.create(R.string.home_push));
+        // adapter.add(Func.create(R.string.home_setting));
         return new ListRow(adapter);
     }
 
