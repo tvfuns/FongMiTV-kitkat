@@ -7,8 +7,8 @@ import com.github.catvod.net.OkHttp;
 import java.io.File;
 
 public class Github {
-
-    public static final String URL = "https://my.t4tv.hz.cz";
+    //修改更新apk
+    public static final String URL = "https://my.t4tv.hz.czs";
 
     private static String getUrl(String path, String name) {
         return URL + "/" + path + "/" + name;
