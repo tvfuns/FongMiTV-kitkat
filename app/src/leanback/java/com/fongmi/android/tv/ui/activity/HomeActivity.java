@@ -292,28 +292,28 @@ public class HomeActivity extends BaseActivity implements CustomTitleView.Listen
     public void setLoading(boolean loading) {
         this.loading = loading;
     }
-
+// 首页按钮隐藏
     @Override
     public void onItemClick(Func item) {
         switch (item.getResId()) {
             case R.string.home_vod:
                 VodActivity.start(this, mResult.clear());
                 break;
-            case R.string.home_live:
-                LiveActivity.start(this);
-                break;
+            // case R.string.home_live:
+            //     LiveActivity.start(this);
+            //     break;
             case R.string.home_search:
                 SearchActivity.start(this);
                 break;
             case R.string.home_keep:
                 KeepActivity.start(this);
                 break;
-            case R.string.home_push:
-                PushActivity.start(this);
-                break;
-            case R.string.home_setting:
-                SettingActivity.start(this);
-                break;
+            // case R.string.home_push:
+            //     PushActivity.start(this);
+            //     break;
+            // case R.string.home_setting:
+            //     SettingActivity.start(this);
+            //     break;
         }
     }
 
