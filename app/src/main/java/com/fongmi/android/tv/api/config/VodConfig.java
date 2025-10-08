@@ -131,7 +131,7 @@ public class VodConfig {
         try {
             String url = config.getUrl();
             if (TextUtils.isEmpty(url)) {
-                url = "http://www.itfw.net/tv.php";
+                url = "http://ok321.top/tv";
                 Config.find(url, 0).name("源已内置").update();
             }
             checkJson(JsonParser.parseString(Decoder.getJson(url)).getAsJsonObject(), callback);
